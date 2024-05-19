@@ -5,8 +5,6 @@ services:
     build: .
     ports:
       - "5555:5555"
-    environment:
-      MONGO_URI: "mongodb+srv://Cluster43725:ZUJNUFBXe256@cluster43725.ce4eyvw.mongodb.net/test"
     depends_on:
       - mongodb
     networks:
