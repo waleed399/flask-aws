@@ -12,6 +12,8 @@ services:
 
   mongodb:
     image: mongo
+    environment:
+      MONGO_URI: "mongodb://mongodb:27017/project_db"
     volumes:
       - mongodb_data:/data/db
     networks:
