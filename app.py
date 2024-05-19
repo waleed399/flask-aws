@@ -6,12 +6,12 @@ import re
 import boto3
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
-
-s3 = boto3.client('s3')
-client = MongoClient("mongo:27017")
 app = Flask(__name__)
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
+s3 = boto3.client('s3')
+client = MongoClient("mongo:27017")
+
 
 db = client.project_db
 users_collection = db.users
