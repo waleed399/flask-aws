@@ -1,0 +1,21 @@
+/* CSS for sea vibe styling */
+body {
+    background-color: #7ec8e3; /* Light blue background */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Additional styling for the text */
+h1 {
+    color: #232f3e; /* Dark text color */
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Styling for the image */
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 80%; /* Adjust image width as needed */
+    border-radius: 10px; /* Rounded corners for the image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}

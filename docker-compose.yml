@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "5555:5555"
+    environment:
+      MONGO_URI: "mongodb+srv://Cluster43725:ZUJNUFBXe256@cluster43725.ce4eyvw.mongodb.net/test"
+    depends_on:
+      - mongodb
+    networks:
+      - my_network
+
+  mongodb:
+    image: mongo
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - my_network
+    expose:
+      - 27017
+
+volumes:
+  mongodb_data:
+
+networks:
+  my_network:
