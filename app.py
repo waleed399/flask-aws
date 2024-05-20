@@ -1,20 +1,23 @@
 # app.py
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 import os
 
 from flask import Flask, render_template, request
 import re
 import boto3
 from flask_pymongo import PyMongo
-from pymongo import MongoClient
-app = Flask(__name__)
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-mongo = PyMongo(app)
+
 s3 = boto3.client('s3')
-client = MongoClient("mongo:27017")
 
+app = Flask(__name__)
+app.config["MONGO_URI"] = os.getenv('MONGO_URI')
+mongo = PyMongo(app)
 
-db = client.project_db
-users_collection = db.users
+# Accessing the MongoDB collection
+collection = mongo.db.users
+
 
 def is_valid_email(email):
     # Regular expression pattern for valid email address
@@ -29,8 +32,8 @@ def index():
         email = request.form["email"]
         if is_valid_email(email):
             user_data = {"name": name, "email": email}
-            users_collection.insert_one(user_data)
-            image_uri = "https://flask-aws-bucket.s3.eu-central-1.amazonaws.com/surf.jpg"
+            collection.insert_one(user_data)
+            image_uri = os.getenv('IMG_URI')
             return render_template("hello.html", name=name, image_url=image_uri)
     return render_template("homepage.html")
 
