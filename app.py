@@ -33,10 +33,10 @@ def index():
         if is_valid_email(email):
             user_data = {"name": name, "email": email}
             collection.insert_one(user_data)
-            # Generate the pre-signed URL for the image
-            bucket_name = 'flask-aws-bucket'
-            object_name = 'surf.jpg'
-            image_uri = "https://flask-aws-bucket.s3.eu-central-1.amazonaws.com/surf.jpg"
+            bucket_name = os.getenv("S3_BUCKET_NAME")
+            object_key = os.getenv("S3_OBJECT_KEY")
+            region = os.getenv("REGION")
+            image_uri = f"https://{bucket_name}.s3.{region}.amazonaws.com/{object_key}"
             return render_template("hello.html", name=name, image_url=image_uri)
     return render_template("homepage.html")
 
