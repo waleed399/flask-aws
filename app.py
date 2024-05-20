@@ -19,6 +19,15 @@ mongo = PyMongo(app)
 collection = mongo.db.users
 
 
+def generate_presigned_url(bucket_name, key):
+    url = s3.generate_presigned_url(
+        'get_object',
+        Params={'Bucket': bucket_name, 'Key': key},
+        ExpiresIn=3600
+    )
+    return url
+
+
 def is_valid_email(email):
     # Regular expression pattern for valid email address
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
@@ -33,7 +42,10 @@ def index():
         if is_valid_email(email):
             user_data = {"name": name, "email": email}
             collection.insert_one(user_data)
-            image_uri = os.getenv('IMG_URI')
+            # Generate the pre-signed URL for the image
+            bucket_name = 'flask-aws-bucket'
+            object_name = 'surf.jpg'
+            image_uri = generate_presigned_url(bucket_name, object_name)
             return render_template("hello.html", name=name, image_url=image_uri)
     return render_template("homepage.html")
 
