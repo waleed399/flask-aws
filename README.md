@@ -87,6 +87,7 @@ This guide will help you deploy your Flask application on an EC2 instance using 
     S3_OBJECT_KEY=surf.jpg
     REGION=eu-central-1
     ```
+    save and exit the .env file ...
     You can connect it to your MongoDB cluster with the correct `MONGO_URI` and add your own AWS S3 bucket details.
 ### 10. Deploy the Flask Application
 
