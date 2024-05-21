@@ -1,4 +1,4 @@
-/* static/style.css */
+/* static/homepage-style.css */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f9;
@@ -7,7 +7,7 @@ body {
 }
 
 .header {
-    background-color: #ff9900; /* Same color as the submit button */
+    background-color: #ff9900; /* Amazon's yellow-like color */
     height: 80px;
     display: flex;
     align-items: center;

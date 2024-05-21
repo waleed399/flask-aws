@@ -1,7 +1,9 @@
-/* CSS for sea vibe styling */
+/* static/hello.css */
 body {
     background-color: #7ec8e3; /* Light blue background */
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* Additional styling for the text */
