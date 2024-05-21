@@ -17,8 +17,9 @@ This guide will help you deploy your Flask application on an EC2 instance using 
 ### 1. Launch EC2 Instance
 
 1. Open the [AWS Management Console](https://aws.amazon.com/).
-2. In the search bar, type `EC2` and select it.
-3. Click on `Launch Instance`.
+2. Sign in to the AWS console
+3. In the search bar, type `EC2` and select it.
+4. Click on `Launch Instance`.
 
 ### 2. Configure Instance Details
 
