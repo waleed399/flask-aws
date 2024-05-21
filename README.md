@@ -1,24 +1,29 @@
-# Flask AWS Deployment Guide
+# 🐍 Flask AWS Deployment Guide
 
 This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
 
+![AWS](https://img.shields.io/badge/AWS-EC2-orange)
+![Docker](https://img.shields.io/badge/Docker-blue)
+![Flask](https://img.shields.io/badge/Flask-1.1.2-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-4.4-brightgreen)
+
 ## Prerequisites
 
-- AWS account
-- Basic knowledge of AWS EC2, Docker, and Docker Compose
+- 🌐 AWS account
+- 🧠 Basic knowledge of AWS EC2, Docker, and Docker Compose
 
 ## Steps to Deploy
 
 ### 1. Launch EC2 Instance
 
-1. Open the AWS Management Console.
+1. Open the [AWS Management Console](https://aws.amazon.com/).
 2. In the search bar, type `EC2` and select it.
 3. Click on `Launch Instance`.
 
 ### 2. Configure Instance Details
 
 4. **Name and Tags**: Enter a name for your instance.
-5. **Application and OS Images (AMI)**: Select `Ubuntu` as the OS and for the AMI choose Ubuntu Server 22.04 LTS (free tier).
+5. **Application and OS Images (AMI)**: Select `Ubuntu` as the OS and choose `Ubuntu Server 22.04 LTS (free tier)`.
 6. **Instance Type**: Choose `t2.micro`.
 
 ### 3. Configure Key Pair
@@ -40,7 +45,7 @@ This guide will help you deploy your Flask application on an EC2 instance using 
 
 ### 5. Connect to Your Instance
 
-15. Go to your EC2 dashboard, select the instance you just created, and click `Connect` (twice) untill the command console opens ... .
+15. Go to your EC2 dashboard, select the instance you just created, and click `Connect` (twice) until the command console opens.
 
 ### 6. Clone the Repository
 
@@ -55,7 +60,7 @@ This guide will help you deploy your Flask application on an EC2 instance using 
 
 ### 7. Install Docker
 
-19. Run the following commands to install Docker: (this may take a couple of minutes !)
+19. Run the following commands to install Docker (this may take a couple of minutes!):
     ```bash
     sudo apt update
     sudo apt install apt-transport-https ca-certificates curl software-properties-common
@@ -74,6 +79,7 @@ This guide will help you deploy your Flask application on an EC2 instance using 
     sudo chmod +x /usr/local/bin/docker-compose
     docker-compose --version
     ```
+
 ### 9. Create Environment Configuration File
 
 21. Since the application uses MongoDB, you need to create a `.env` file with the necessary configurations:
@@ -87,8 +93,10 @@ This guide will help you deploy your Flask application on an EC2 instance using 
     S3_OBJECT_KEY=surf.jpg
     REGION=eu-central-1
     ```
-    save and exit the .env file ...
+    Save and exit the `.env` file.
+    
     You can connect it to your MongoDB cluster with the correct `MONGO_URI` and add your own AWS S3 bucket details.
+
 ### 10. Deploy the Flask Application
 
 22. Run the Docker Compose command inside the EC2 instance:
@@ -103,10 +111,12 @@ This guide will help you deploy your Flask application on an EC2 instance using 
     http://YOUR_INSTANCE_IP:5555
     ```
 
-## Conclusion
+## 🎉 Conclusion
 
 You've successfully deployed your Flask application on an EC2 instance using Docker and Docker Compose. Happy coding!
 
 ---
 
 Feel free to reach out if you have any questions or need further assistance.
+
+![Flask Logo](https://flask.palletsprojects.com/en/2.0.x/_images/flask-logo.png)
