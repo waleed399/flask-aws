@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='hello.css') }}">
 </head>
 <body>
-    <div class="congratulations">
-        <h1>Hello, {{ name }}!</h1>
+    <div class="background-container">
+        <img src="{{ url_for('static', filename='aws-background.jpg') }}" alt="AWS Background" class="background">
     </div>
-    <div class="sea-vibe-image">
-        <img src="{{ image_url }}" alt="Image from S3">
+    <div class="content">
+        <div class="congratulations">
+            <h1>Hello, {{ name }}!</h1>
+            <div class="sea-vibe-image">
+                <img src="{{ image_url }}" alt="Image from S3">
+            </div>
+        </div>
     </div>
 </body>
 </html>

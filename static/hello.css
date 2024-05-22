@@ -1,23 +1,47 @@
 /* static/hello.css */
 body {
-    background-color: #7ec8e3; /* Light blue background */
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling */
+    position: relative;
 }
 
-/* Additional styling for the text */
-h1 {
-    color: #232f3e; /* Dark text color */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the background is behind other content */
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire background */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff; /* White text color */
     text-align: center;
-    margin-top: 50px;
 }
 
-/* Styling for the image */
-img {
-    display: block;
-    margin: 0 auto;
-    max-width: 80%; /* Adjust image width as needed */
+.congratulations h1 {
+    margin-top: 0;
+}
+
+.sea-vibe-image img {
+    width: 100%; /* Adjusted image width to be larger */
     border-radius: 10px; /* Rounded corners for the image */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    margin-top: 0px;
 }
