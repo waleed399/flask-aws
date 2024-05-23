@@ -64,11 +64,7 @@ This guide will help you deploy your Flask application on an EC2 instance using 
 19. Run the following commands to install Docker (this may take a couple of minutes!):
     ```bash
     sudo apt update
-    sudo apt install apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    sudo apt update
-    sudo apt install docker-ce
+    sudo apt-get install docker.io -y
     sudo systemctl start docker
     ```
 
