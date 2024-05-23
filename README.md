@@ -1,3 +1,4 @@
+## These steps can be used if you dont want to create a autoscaling group and LoadBalancer and just run the application on EC2 !
 # 🐍 Flask AWS Deployment Guide
 
 This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
