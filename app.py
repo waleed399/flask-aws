@@ -1,14 +1,13 @@
 # app.py
-from dotenv import load_dotenv
-# Load environment variables from .env file
-load_dotenv()
 import os
 
 from flask import Flask, render_template, request, redirect
 import re
 import boto3
 from flask_pymongo import PyMongo
-
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 s3 = boto3.client('s3')
 
 app = Flask(__name__)
