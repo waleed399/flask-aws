@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import os
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import re
 import boto3
 from flask_pymongo import PyMongo
@@ -25,6 +25,12 @@ def is_valid_email(email):
     return re.match(pattern, email) is not None
 
 
+@app.route('/image')
+def image():
+    url = s3.generate_presigned_url('get_object', Params={'Bucket': os.getenv("S3_BUCKET_NAME"), 'Key': os.getenv("S3_OBJECT_KEY")})
+    return redirect(url)
+
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -33,11 +39,7 @@ def index():
         if is_valid_email(email):
             user_data = {"name": name, "email": email}
             collection.insert_one(user_data)
-            bucket_name = os.getenv("S3_BUCKET_NAME")
-            object_key = os.getenv("S3_OBJECT_KEY")
-            region = os.getenv("REGION")
-            image_uri = f"https://{bucket_name}.s3.{region}.amazonaws.com/{object_key}"
-            return render_template("hello.html", name=name, image_url=image_uri)
+            return render_template("hello.html", name=name, image_url="/image")
     return render_template("homepage.html")
 
 

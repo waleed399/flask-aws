@@ -1,3 +1,57 @@
+### 1. Create EC2 Template
+
+- **Operating System**: Ubuntu 22.04
+- **Instance Type**: t2.micro
+- **Security Group**: Allow inbound traffic on ports 22 (SSH), 80 (HTTP), and 5555 (application).
+- **User data**:
+    ```bash
+    #!/bin/bash
+
+    # Clone the project repository
+    git clone https://github.com/waleed399/flask-aws.git
+
+    # Update package lists and install Docker
+    sudo apt-get update
+    sudo apt-get install docker.io -y
+
+    # Start Docker service
+    sudo systemctl start docker
+
+    # Install Docker Compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+    docker-compose --version
+
+    # Navigate to the project directory
+    cd flask-aws
+
+    # Set up environment variables in .env file
+    echo "MONGO_URI=mongodb+srv://Cluster43725:ZUJNUFBXe256@cluster43725.ce4eyvw.mongodb.net/test" >> .env
+    echo "S3_BUCKET_NAME=flask-aws-bucket" >> .env
+    echo "S3_OBJECT_KEY=surf.jpg" >> .env
+    echo "REGION=eu-central-1" >> .env
+
+    # Start the application
+    sudo docker-compose up
+    ```
+
+### 2. Create Auto Scaling Group
+
+- To test your Auto Scaling, connect to your EC2 instance and run the following command:
+    ```bash
+    sudo apt-get install stress-ng
+    stress-ng --cpu $(nproc) --timeout 5m --metrics-brief
+    ```
+
+### 3. Create Load Balancer
+
+- Don't forget to connect it with the correct port (in our app, it's 5555).
+
+### 4. Final Results
+
+- Your application is now fully deployed with auto-scaling and load balancing.
+
+## Another way to 
 ## These steps can be used if you dont want to create a autoscaling group and LoadBalancer and just run the application on EC2 !
 # 🐍 Flask AWS Deployment Guide
 
