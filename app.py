@@ -8,7 +8,7 @@ from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
-s3 = boto3.client('s3')
+s3 = boto3.client('s3', region_name=os.getenv("REGION"))
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = os.getenv('MONGO_URI')
@@ -38,7 +38,8 @@ def index():
         if is_valid_email(email):
             user_data = {"name": name, "email": email}
             collection.insert_one(user_data)
-            return render_template("hello.html", name=name, image_url="/image")
+            image_url = "/image"
+            return render_template("hello.html", name=name, image_url=image_url)
     return render_template("homepage.html")
 
 
