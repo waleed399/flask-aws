@@ -26,13 +26,13 @@
     cd flask-aws
 
     # Set up environment variables in .env file
-    echo "MONGO_URI=mongodb+srv://Cluster43725:ZUJNUFBXe256@cluster43725.ce4eyvw.mongodb.net/test" >> .env
-    echo "S3_BUCKET_NAME=flask-aws-bucket" >> .env
-    echo "S3_OBJECT_KEY=surf.jpg" >> .env
-    echo "REGION=eu-central-1" >> .env
+    echo "MONGO_URI=YOUR_MONGO_CONNECTION_STRING" >> .env
+    echo "S3_BUCKET_NAME=YOUR_BUCKET_NAME" >> .env
+    echo "S3_OBJECT_KEY=YOUR_OBJECT_NAME" >> .env
+    echo "REGION=YOUR_REGION" >> .env
 
     # Start the application
-    sudo docker-compose up
+    sudo docker-compose up --build
     ```
 
 ### 2. Create Auto Scaling Group
