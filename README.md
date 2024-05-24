@@ -1,8 +1,15 @@
+### Project Description
+This project involves deploying a Flask application on an AWS EC2 instance using Docker and Docker Compose.
+The setup includes creating an EC2 template with Ubuntu 22.04, installing Docker and Docker Compose, and configuring necessary environment variables. 
+Additionally, it involves setting up an Auto Scaling Group to manage the application's load dynamically and a Load Balancer to ensure seamless access on port 5555.
+The final deployment ensures a scalable and balanced Flask application environment.
+
 ### 1. Create EC2 Template
 
 - **Operating System**: Ubuntu 22.04
 - **Instance Type**: t2.micro
 - **Security Group**: Allow inbound traffic on ports 22 (SSH), 80 (HTTP), and 5555 (application).
+- **IAM Role**: Assign the S3ReadOnlyAccess permission to the instance role
 - **User data**:
     ```bash
     #!/bin/bash
@@ -34,7 +41,8 @@
     # Start the application
     sudo docker-compose up --build
     ```
-
+# Make sure your S3 AWS Bucket is private by editing the permissions:
+![](images/img_8.png)
 ### 2. Create Auto Scaling Group
 
 - To test your Auto Scaling, connect to your EC2 instance and run the following command:
@@ -51,8 +59,8 @@
 
 - Your application is now fully deployed with auto-scaling and load balancing.
 
-## Another way to 
-## These steps can be used if you dont want to create a autoscaling group and LoadBalancer and just run the application on EC2 !
+## Another Easier way to deploy the application is by creating EC2
+## These steps can be used if you dont want to create an autoscaling group and LoadBalancer and just run the application on EC2 !
 # 🐍 Flask AWS Deployment Guide
 
 This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
@@ -140,10 +148,10 @@ This guide will help you deploy your Flask application on an EC2 instance using 
     ```
     Add the following content to the `.env` file:
     ```
-    MONGO_URI=mongodb+srv://Cluster43725:ZUJNUFBXe256@cluster43725.ce4eyvw.mongodb.net/test
-    S3_BUCKET_NAME=flask-aws-bucket
-    S3_OBJECT_KEY=surf.jpg
-    REGION=eu-central-1
+    MONGO_URI="YOUR_MONGO_CONNECTION_STRING"
+    S3_BUCKET_NAME="YOUR_BUCKET_NAME"
+    S3_OBJECT_KEY="YOUR_OBJECT_NAME"
+    REGION="YOUR_REGION"
     ```
     Save and exit the `.env` file.
     

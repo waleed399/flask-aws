@@ -43,10 +43,10 @@ body {
 }
 
 .container {
-    max-width: 600px;
-    padding: 50px;
+    max-width: 500px;
+    padding: 70px;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 7px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin: 50px auto; /* Center the container horizontally */
@@ -70,7 +70,7 @@ label {
 input[type="text"],
 input[type="email"],
 button {
-    width: 100%;
+    width: 80%;
     padding: 15px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
