@@ -1,15 +1,25 @@
-### Project Description
-This project involves deploying a Flask application on an AWS EC2 instance using Docker and Docker Compose.
-The setup includes creating an EC2 template with Ubuntu 22.04, installing Docker and Docker Compose, and configuring necessary environment variables. 
-Additionally, it involves setting up an Auto Scaling Group to manage the application's load dynamically and a Load Balancer to ensure seamless access on port 5555.
-The final deployment ensures a scalable and balanced Flask application environment.
+![AWS](https://img.shields.io/badge/AWS-EC2-orange)
+![Docker](https://img.shields.io/badge/Docker-blue)
+![Flask](https://img.shields.io/badge/Flask-1.1.2-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-4.4-brightgreen)
+
+---
+
+## Project Description
+
+This project involves deploying a Flask application on an AWS EC2 instance using Docker and Docker Compose. The setup includes creating an EC2 template with Ubuntu 22.04, installing Docker and Docker Compose, and configuring necessary environment variables. Additionally, it involves setting up an Auto Scaling Group to manage the application's load dynamically and a Load Balancer to ensure seamless access on port 5555. The final deployment ensures a scalable and balanced Flask application environment.
+
+---
+
+## Steps to Deploy
 
 ### 1. Create EC2 Template
 
 - **Operating System**: Ubuntu 22.04
 - **Instance Type**: t2.micro
 - **Security Group**: Allow inbound traffic on ports 22 (SSH), 80 (HTTP), and 5555 (application).
-- **IAM Role**: Assign the S3ReadOnlyAccess permission to the instance role
+- **IAM Role**: Assign the `S3ReadOnlyAccess` permission to the instance role
+
 - **User data**:
     ```bash
     #!/bin/bash
@@ -41,26 +51,36 @@ The final deployment ensures a scalable and balanced Flask application environme
     # Start the application
     sudo docker-compose up --build
     ```
-# Make sure your S3 AWS Bucket is private by editing the permissions:
-![](images/img_8.png)
+
+![S3 Permissions](images/img_8.png)
+**Make sure your S3 AWS Bucket is private by editing the permissions.**
+
 ### 2. Create Auto Scaling Group
 
+![Auto Scaling Group](images/img_7.png)
+
 - To test your Auto Scaling, connect to your EC2 instance and run the following command:
+- This command will stress the EC2's CPU and after the threshold (in my case 30%) the auto-scaling group will create another instance:
     ```bash
     sudo apt-get install stress-ng
     stress-ng --cpu $(nproc) --timeout 5m --metrics-brief
     ```
+![Stress Test](images/img_3.png)
 
 ### 3. Create Load Balancer
 
 - Don't forget to connect it with the correct port (in our app, it's 5555).
 
+![Load Balancer](images/img_4.png)
+
 ### 4. Final Results
 
-- Your application is now fully deployed with auto-scaling and load balancing.
+Your application is now fully deployed with auto-scaling and load balancing.
 
+![Final Result 1](images/img_1.png)
+![Final Result 2](images/img_2.png)
+![Final Result 3](images/img.png)
 ## Another Easier way to deploy the application is by creating EC2
-## These steps can be used if you dont want to create an autoscaling group and LoadBalancer and just run the application on EC2 !
 # 🐍 Flask AWS Deployment Guide
 
 This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
