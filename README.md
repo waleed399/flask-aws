@@ -14,7 +14,6 @@
   - [2. Create Auto Scaling Group](#2-create-auto-scaling-group)
   - [3. Create Load Balancer](#3-create-load-balancer)
   - [4. Final Results](#4-final-results)
-- [Another Easier Way to Deploy](#another-easier-way-to-deploy)
 - [Prerequisites](#prerequisites)
 - [Detailed Steps to Deploy](#detailed-steps-to-deploy)
   - [1. Launch EC2 Instance](#1-launch-ec2-instance)
