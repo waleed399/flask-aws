@@ -77,7 +77,7 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 
 Your application is now fully deployed with auto-scaling and load balancing.
 
-![Final Result 1](images/img_1.png)
+![](images/img_5.png)
 ![Final Result 2](images/img_2.png)
 ![Final Result 3](images/img.png)
 ## Another Easier way to deploy the application is by creating EC2
