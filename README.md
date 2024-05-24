@@ -1,11 +1,9 @@
-# 🐍 Flask AWS Deployment Guide
-
-This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
-
 ![AWS](https://img.shields.io/badge/AWS-EC2-orange)
 ![Docker](https://img.shields.io/badge/Docker-blue)
 ![Flask](https://img.shields.io/badge/Flask-1.1.2-green)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4.4-brightgreen)
+
+---
 
 ---
 
@@ -48,6 +46,7 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 - **Instance Type**: t2.micro
 - **Security Group**: Allow inbound traffic on ports 22 (SSH), 80 (HTTP), and 5555 (application).
 - **IAM Role**: Assign the `S3ReadOnlyAccess` permission to the instance role
+
 - **User data**:
     ```bash
     #!/bin/bash
@@ -82,7 +81,7 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 
 ![S3 Permissions](images/img_8.png)
 **Make sure your S3 AWS Bucket is private by editing the permissions.**
-
+![](images/img_1.png)
 ### 2. Create Auto Scaling Group
 
 ![Auto Scaling Group](images/img_7.png)
@@ -105,13 +104,25 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 
 Your application is now fully deployed with auto-scaling and load balancing.
 
-![Final Result 1](images/img_1.png)
+![](images/img_5.png)
 ![Final Result 2](images/img_2.png)
 ![Final Result 3](images/img.png)
+## Another Easier way to deploy the application is by creating EC2
+# 🐍 Flask AWS Deployment Guide
 
----
+This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
 
-## Another Easier Way to Deploy
+![AWS](https://img.shields.io/badge/AWS-EC2-orange)
+![Docker](https://img.shields.io/badge/Docker-blue)
+![Flask](https://img.shields.io/badge/Flask-1.1.2-green)
+![MongoDB](https://img.shields.io/badge/MongoDB-4.4-brightgreen)
+
+## Prerequisites
+
+- 🌐 AWS account
+- 🧠 Basic knowledge of AWS EC2, Docker, and Docker Compose
+
+## Steps to Deploy
 
 ### 1. Launch EC2 Instance
 
@@ -207,11 +218,11 @@ Your application is now fully deployed with auto-scaling and load balancing.
     http://YOUR_INSTANCE_IP:5555
     ```
 
----
-
-## Conclusion
+## 🎉 Conclusion
 
 You've successfully deployed your Flask application on an EC2 instance using Docker and Docker Compose. Happy coding!
+
+---
 
 Feel free to reach out if you have any questions or need further assistance.
 
