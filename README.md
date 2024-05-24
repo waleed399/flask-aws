@@ -1,7 +1,36 @@
+# 🐍 Flask AWS Deployment Guide
+
+This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
+
 ![AWS](https://img.shields.io/badge/AWS-EC2-orange)
 ![Docker](https://img.shields.io/badge/Docker-blue)
 ![Flask](https://img.shields.io/badge/Flask-1.1.2-green)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4.4-brightgreen)
+
+---
+
+## Table of Contents
+- [Project Description](#project-description)
+- [Steps to Deploy](#steps-to-deploy)
+  - [1. Create EC2 Template](#1-create-ec2-template)
+  - [2. Create Auto Scaling Group](#2-create-auto-scaling-group)
+  - [3. Create Load Balancer](#3-create-load-balancer)
+  - [4. Final Results](#4-final-results)
+- [Another Easier Way to Deploy](#another-easier-way-to-deploy)
+- [Prerequisites](#prerequisites)
+- [Detailed Steps to Deploy](#detailed-steps-to-deploy)
+  - [1. Launch EC2 Instance](#1-launch-ec2-instance)
+  - [2. Configure Instance Details](#2-configure-instance-details)
+  - [3. Configure Key Pair](#3-configure-key-pair)
+  - [4. Configure Network Settings](#4-configure-network-settings)
+  - [5. Connect to Your Instance](#5-connect-to-your-instance)
+  - [6. Clone the Repository](#6-clone-the-repository)
+  - [7. Install Docker](#7-install-docker)
+  - [8. Install Docker Compose](#8-install-docker-compose)
+  - [9. Create Environment Configuration File](#9-create-environment-configuration-file)
+  - [10. Deploy the Flask Application](#10-deploy-the-flask-application)
+  - [11. Access Your Flask Application](#11-access-your-flask-application)
+- [Conclusion](#conclusion)
 
 ---
 
@@ -19,7 +48,6 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 - **Instance Type**: t2.micro
 - **Security Group**: Allow inbound traffic on ports 22 (SSH), 80 (HTTP), and 5555 (application).
 - **IAM Role**: Assign the `S3ReadOnlyAccess` permission to the instance role
-
 - **User data**:
     ```bash
     #!/bin/bash
@@ -54,7 +82,7 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 
 ![S3 Permissions](images/img_8.png)
 **Make sure your S3 AWS Bucket is private by editing the permissions.**
-![](images/img_1.png)
+
 ### 2. Create Auto Scaling Group
 
 ![Auto Scaling Group](images/img_7.png)
@@ -77,25 +105,13 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 
 Your application is now fully deployed with auto-scaling and load balancing.
 
-![](images/img_5.png)
+![Final Result 1](images/img_1.png)
 ![Final Result 2](images/img_2.png)
 ![Final Result 3](images/img.png)
-## Another Easier way to deploy the application is by creating EC2
-# 🐍 Flask AWS Deployment Guide
 
-This guide will help you deploy your Flask application on an EC2 instance using Docker and Docker Compose.
+---
 
-![AWS](https://img.shields.io/badge/AWS-EC2-orange)
-![Docker](https://img.shields.io/badge/Docker-blue)
-![Flask](https://img.shields.io/badge/Flask-1.1.2-green)
-![MongoDB](https://img.shields.io/badge/MongoDB-4.4-brightgreen)
-
-## Prerequisites
-
-- 🌐 AWS account
-- 🧠 Basic knowledge of AWS EC2, Docker, and Docker Compose
-
-## Steps to Deploy
+## Another Easier Way to Deploy
 
 ### 1. Launch EC2 Instance
 
@@ -191,11 +207,11 @@ This guide will help you deploy your Flask application on an EC2 instance using 
     http://YOUR_INSTANCE_IP:5555
     ```
 
-## 🎉 Conclusion
+---
+
+## Conclusion
 
 You've successfully deployed your Flask application on an EC2 instance using Docker and Docker Compose. Happy coding!
-
----
 
 Feel free to reach out if you have any questions or need further assistance.
 
