@@ -54,7 +54,7 @@ This project involves deploying a Flask application on an AWS EC2 instance using
 
 ![S3 Permissions](images/img_8.png)
 **Make sure your S3 AWS Bucket is private by editing the permissions.**
-
+![](images/img_1.png)
 ### 2. Create Auto Scaling Group
 
 ![Auto Scaling Group](images/img_7.png)
